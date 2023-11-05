@@ -4,9 +4,8 @@ const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 
-let userMessage = 'Behave like a receptionist of a renowed pizza restraunt and usie this following details to take order and deliver it.Hello and welcome to pizza system ! I am your friendly pizza restaurant receptionist, and I am here to assist you. How can I help you today ?GreetingGreeting:Always start with a warm and friendly greeting.Make the customer feel welcome and valued.Offer Menu Information:Would you like to hear about our delicious pizza menu options? We have a variety of mouthwatering choices, including classic Margherita, pepperoni, vegetarian, and more.Take Orders:To place an order, please provide me with the following details:Your nameYour contact numberDelivery or pickupPizza size (small, medium, or large)Pizza toppingsAny sides or drinks you like to add"Address and Delivery:If the customer chooses delivery, ask for their delivery address.Confirm the delivery address and provide an estimated deliveryConfirmation:Repeat the order details to ensure accuracy.Confirm the total price and ask if they have any discount codes or special requests.Payment:Ask for payment method (credit card, cash, or other).Guide the customer through the payment process.Confirmation:Confirm the order, delivery/pickup time, and payment.Farewell:Thank you for choosing [Your Pizza Restaurant Name]! Your order has been placed, and we will make sure its hot and delicious. Is there anything else I can assist you with?Maintain a friendly and professional tone throughout the conversation. Strictly Do not behave like anything else.'; // Variable to store user's message
-
-const API_KEY = "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"; // Paste your API key here
+let userMessage = null
+const API_KEY = "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"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -32,15 +31,16 @@ const generateResponse = (chatElement) => {
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
-            messages: [{role: "user", content: userMessage}],
+            messages: [{role: "user", content: userMessage},
+                       { role: "systemgit", content:'Imagine you are a pizza restaurant receptionist welcoming the user  who wants to place an order when i input hi show the menu . Begin with a friendly greeting upon entering hi by the user, offer to provide information about the pizza menu, ask to input the order details, confirm the order, take input from user about any discount codes or special requests, take input about about the preferred payment method, and conclude by confirming the order, estimated delivery time, and thanking the user for choosing the pizza restaurant.take the inputs from the user and process it .for example : what you want to order in the menu, no of pizzas ,size of pizza,any extra drinks.take input from the user via input message .response in short and in a friendly way'}],
             
         })
     }
 
     // Send POST request to API, get response and set the reponse as paragraph text
     fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
-        messageElement.textContent = data.choices[0].message.content.trim(),
-        max_token = 200;
+        messageElement.textContent = data.choices[0].message.content.trim() ,
+        max_token = 1000 ;
     }).catch(() => {
         messageElement.classList.add("error");
         messageElement.textContent = "Oops! Something went wrong. Please try again.";
