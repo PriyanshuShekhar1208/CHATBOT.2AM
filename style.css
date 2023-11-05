@@ -44,7 +44,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   right: 35px;
   bottom: 90px;
   width: 420px;
-  background: #cecece;
+  background: #dcdbdb;
   border-radius: 15px;
   overflow: hidden;
   opacity: 0;
@@ -64,7 +64,7 @@ body.show-chatbot .chatbot {
   padding: 16px 0;
   position: relative;
   text-align: center;
-  color: #f0f0f0;
+  color: #fff;
   background: #724ae8;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }

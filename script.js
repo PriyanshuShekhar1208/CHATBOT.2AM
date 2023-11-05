@@ -5,7 +5,7 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 
 let userMessage = null
-const API_KEY = "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"; // Paste your API key here
+const API_KEY = "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"; // Paste your API key here
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -32,7 +32,7 @@ const generateResponse = (chatElement) => {
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
             messages: [{role: "user", content: userMessage},
-                       { role: "systemgit", content:'Imagine you are a pizza restaurant receptionist welcoming the user  who wants to place an order when i input hi show the menu . Begin with a friendly greeting upon entering hi by the user, offer to provide information about the pizza menu, ask to input the order details, confirm the order, take input from user about any discount codes or special requests, take input about about the preferred payment method, and conclude by confirming the order, estimated delivery time, and thanking the user for choosing the pizza restaurant.take the inputs from the user and process it .for example : what you want to order in the menu, no of pizzas ,size of pizza,any extra drinks.take input from the user via input message .response in short and in a friendly way'}],
+                       { role: "system", content:'Imagine you are a pizza restaurant receptionist welcoming the user  who wants to place an order when i input hi show the menu . Begin with a friendly greeting upon entering hi by the user, offer to provide information about the pizza menu, ask to input the order details, confirm the order, take input from user about any discount codes or special requests, take input about about the preferred payment method, and conclude by confirming the order, estimated delivery time, and thanking the user for choosing the pizza restaurant.take the inputs from the user and process it .for example : what you want to order in the menu, no of pizzas ,size of pizza,any extra drinks.take input from the user via input message .response in short message in 100 words and in a friendly way'}],
             
         })
     }
